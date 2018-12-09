@@ -8,7 +8,6 @@ Note: In the string, each word is separated by single space and there will not b
 '''
 
 string = input("Type a string:")
-
 print (string[::-1])
 
 
