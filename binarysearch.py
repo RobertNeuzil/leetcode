@@ -23,15 +23,15 @@ def binary_search(data, target):
 	high = len(data) - 1
 	low = 0
 	while low < high:
-		mid = (high + low) // 2
-		if data[mid] == target:
+		middle = (high + low) // 2
+		if data[middle] == target:
 			return True
-		if data[mid] > target:
-			high = mid - 1
+		elif data[middle] < target:
+			high = middle - 1
 		else:
-			low = mid + 1
-
+			low = middle + 1
 	return False
 
-print(linear_search(data, target2))
-#print(binary_search(data, target2)) 
+
+print(linear_search(data, target2)) # takes twice as long
+print(binary_search(data, target2)) 
