@@ -8,18 +8,18 @@ str_1 = "bear"
 str_2 = "radar"
 
 
-def check(string):
-	list_string = list(string)
-	set_string = set(string)
-	if len(list_string) == len(set_string):
+def unique(one):
+	one = list(one)
+	two = set(one)
+
+	if len(one) == len(two):
 		return True
 	else:
 		return False
 
 
-print(check(str_1))
-print(check(str_2))
-
+print (unique(str_1))
+print(unique(str_2))
 
 	
 

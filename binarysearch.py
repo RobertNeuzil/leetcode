@@ -1,37 +1,41 @@
-import timeit
-data = list(range(100000001))
-	   
-target = 2
-target2 = 222222222  # two, too, to
-
-# linear search
-
-
-def linear_search(data, target):
-    # range(len(data))  range(0, 15) start will start there, stop will generate numbers UP TO but NOT INCLUDING STOP
-    for i in range(len(data)):
-        if data[i] == target:
-            return True
-
-    return False
-
-
-
-
-# iterative binary search
-def binary_search(data, target):
-	high = len(data) - 1
-	low = 0
-	while low < high:
-		middle = (high + low) // 2
-		if data[middle] == target:
+# Linear Search
+def linear_search(data, target):	
+	for i in range(len(data)):
+		if data[i] == target:
 			return True
-		elif data[middle] < target:
-			high = middle - 1
-		else:
-			low = middle + 1
 	return False
 
+# Iterative Binary Search 
+def binary_search_iterative(data, target):
+	low = 0
+	high = len(data) - 1
 
-print(linear_search(data, target2)) # takes twice as long
-print(binary_search(data, target2)) 
+	while low <= high:
+		mid = (low + high) // 2
+		if target == data[mid]:
+			return True
+		elif target < data[mid]:
+			high = mid - 1
+		else:
+			low = mid + 1
+	return False 
+
+# Recursive Binary Search 
+def binary_search_recursive(data, target, low, high):
+	if low > high:
+		return False
+	else:
+		mid = (low + high) // 2
+		if target == data[mid]:
+			return True
+		elif target < data[mid]:
+			return binary_search_recursive(data, target, low, mid-1)
+		else:
+			return binary_search_recursive(data, target, mid+1, high)
+
+
+data = [2,4,5,7,8,9,12,14,17,19,22,25,27,28,33,37]
+target = 37
+
+print(binary_search_recursive(data, target, 0, len(data)-1))
+print(binary_search_iterative(data, target)
