@@ -8,8 +8,8 @@ def is_target_in_list(data, target):
 			return True
 	return False
 
-print(is_target_in_list(data, target))
-print(is_target_in_list(data, target2))
+#print(is_target_in_list(data, target))
+#print(is_target_in_list(data, target2))
 
 def binary_search(data, target):
 	if len(data) < 1:
@@ -27,8 +27,8 @@ def binary_search(data, target):
 			low = mid + 1
 	return False
 
-print (binary_search(data, target))
-print (binary_search(data, target2))
+#print (binary_search(data, target))
+#print (binary_search(data, target2))
 
 def binary_recursive(data, target, low, high):
 	if low > high:
