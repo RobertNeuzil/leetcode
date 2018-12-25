@@ -1,36 +1,17 @@
-from functools import lru_cache
-
-fibonacci_cache = {}
+cache_dict = {}
 
 def fibonacci(n):
-	if n in fibonacci_cache:
-		return fibonacci_cache[n]
-	
-	if n == 1:
-		value = 1
-	if n == 2:
-		value = 1
-	elif n > 2:
-		value = fibonacci(n-1) + fibonacci(n-2)
 
-	fibonacci_cache[n] = value
+	if n in cache_dict:
+		return cache_dict[n]
+
+	if n == 1 or n == 2:
+		value = 1
+	else:
+		value = fibonacci(n-1) + fibonacci(n-2)
+	cache_dict[n] = value
 	return value
 
+for x in range(1, 101):
+	print (x, ":", fibonacci(x))
 
-
-
-@lru_cache(maxsize = None)
-def fibonacci_two(n):
-	if n == 1:
-		return 1
-	if n == 2:
-		return 2
-	elif n > 2:
-		return fibonacci_two(n -1) + fibonacci_two(n -2)
-
-for n in range(1, 101):
-	print (n, ":", fibonacci_two(n))
-
-
-#for n in range(1, 1001):
-	#print (n, ":", fibonacci(n))

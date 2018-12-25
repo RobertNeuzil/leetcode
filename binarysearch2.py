@@ -1,23 +1,18 @@
-my_num = [1, 2, 3, 4, 5, 6, 7, 9, 11, 15, 19, 22, 26]
-target = 6
+data = [1, 2, 3, 4, 5, 6, 7, 8 , 9]
+target = 2
 
-
-
-def binary_recursive(my_num, target, high, low):
-	while high >= low:
-		mid = (high + low) // 2
-		if my_num[mid] == target:
+def recursive_binary(data, target, low, high):
+	if low > high:
+		return False
+	else:
+		mid = (low + high) // 2
+		if data[mid] == target:
 			return True
-		if target < my_num[mid]:
-			return binary_recursive(my_num, target, mid + 1, low)
+		
+		elif target < data[mid]:
+			return (recursive_binary(data, target, low, mid - 1))
 		else:
-			return binary_recursive(my_num, target, high, mid + 1)
-	
-	return False
+			return (recursive_binary(data, target, mid + 1, high))
 
 
-
-print (
-
-binary_recursive(my_num, target, len(my_num) -1, 0)
-)
+print(recursive_binary(data, 1110, 0, len(data) - 1))
