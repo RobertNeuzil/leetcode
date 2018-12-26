@@ -1,51 +1,40 @@
-data = [1, 2, 4, 8, 9, 11, 13, 14, 15, 18, 19, 22, 25, 26, 28]
-target = 11
-target2 = 12
+el_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
-
-def iterative_search(target, data):
-	for c in data:
-		if c == target:
+def binary_search(target, el_list):
+	for x in el_list:
+		if x == target:
 			return True
 	return False
 
 
-
-def binary_search(target, data):
-	high = len(data) - 1
+def binary_better(target, el_list):
+	high = len(el_list) - 1
 	low = 0
-
 	while low <= high:
-		mid = (low + high) // 2
-		if data[mid] == target:
+		mid = (low + high ) // 2
+
+		if el_list[mid] == target:
 			return True
-		elif target < data[mid]:
+		elif target < el_list[mid]:
 			high = mid - 1
 		else:
 			low = mid + 1
 	return False
 
-def recursive_search(target, data, low, high):
+
+
+def binary_recursive(data, target, high, low):
 	if low > high:
 		return False
 	else:
-		mid = (low + high) // 2
+		mid = (high + low) // 2
 		if target == data[mid]:
 			return True
 		elif target < data[mid]:
-			return recursive_search(target, data, low, mid -1)
+			return binary_recursive(data, target, mid - 1, low)
 		else:
-			return recursive_search(target, data, mid + 1, high)
+			return binary_recursive(data, target, high, mid + 1)
+	return False
 
 
-
-
-
-
-#print(iterative_search(target, data))
-#print(iterative_search(target2, data))
-
-#print(binary_search(target, data))
-#print(binary_search(target2, data))
-
-print(recursive_search(target, data, 0, len(data) - 1))
+print(binary_recursive(el_list, 7, len(el_list) -1 , 0))
