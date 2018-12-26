@@ -1,5 +1,5 @@
 data = [1, 2, 3, 4, 5, 6, 7, 8 , 9]
-target = 2
+
 
 def recursive_binary(data, target, low, high):
 	if low > high:

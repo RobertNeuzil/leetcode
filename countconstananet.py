@@ -1,26 +1,30 @@
 vowels = "aeiou"
 
-input_str = "abc de"
-input_str = "LuCiDPrograMMiNG"
+input_str1 = "abc de"
+input_str2 = "EeEeE"
 
 
-def iterative_count_consonants(input_str):
-    consonant_count = 0
-    for i in range(len(input_str)):
-        if input_str[i].lower() not in vowels and input_str[i].isalpha():
-            consonant_count += 1
-    return consonant_count
+def count_iterative(string, vowels):
+    string = string.lower()
+    count = 0
+    for x in string:
+        if x in vowels:
+            count += 1
+    return count
 
 
-def recursive_count_consonants(input_str):
-    if input_str == '':
+def count_recursive(string):
+    if string == "":
         return 0
-
-    if input_str[0].lower() not in vowels and input_str[0].isalpha():
-        return 1 + recursive_count_consonants(input_str[1:])
+    if string[0].lower() not in vowels:
+        return 1 + count_recursive(string[1:])
     else:
-        return recursive_count_consonants(input_str[1:])
+        return count_recursive(string[1:])
 
 
-print(iterative_count_consonants(input_str))
-print(recursive_count_consonants(input_str))
+
+print(count_iterative(input_str1, vowels))
+print(count_iterative(input_str2, vowels))
+
+
+print ( count_recursive(input_str1) )

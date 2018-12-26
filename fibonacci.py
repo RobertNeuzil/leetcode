@@ -1,17 +1,16 @@
-cache_dict = {}
+fibonacci_cache = {}
 
 def fibonacci(n):
-
-	if n in cache_dict:
-		return cache_dict[n]
+	if n in fibonacci_cache:
+		return fibonacci_cache[n]
 
 	if n == 1 or n == 2:
 		value = 1
-	else:
-		value = fibonacci(n-1) + fibonacci(n-2)
-	cache_dict[n] = value
+	elif n > 2:
+		value = fibonacci(n-1) + fibonacci(n - 2)
+
+	fibonacci_cache[n] = value
 	return value
 
-for x in range(1, 101):
-	print (x, ":", fibonacci(x))
-
+for n in range(1, 101):
+	print (n, ':', fibonacci(n))
