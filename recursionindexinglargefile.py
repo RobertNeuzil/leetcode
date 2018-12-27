@@ -96,7 +96,7 @@ def length_of_string(string):
     
     return length_of_string(string[1::]) + 1 
 
-print(length_of_string(string_with_unkown_length))
+#print(length_of_string(string_with_unkown_length))
 
 
 
@@ -109,4 +109,31 @@ def find_upper_recursive(string, index = 0):
     return find_upper_recursive(string, index + 1)
     
 
-print(find_upper_recursive(cap_letter_string))
+#print(find_upper_recursive(cap_letter_string))
+
+
+not_unique = "unique"
+unique = "bear"
+
+def all_unique(string):
+    set_string = set(string)
+    list_string = list(string)
+    if len(set_string) == len(list_string):
+        return True
+    
+    return False
+
+#print(all_unique(not_unique))
+
+def fizzbuzz():
+    for x in range(1, 101):
+        if x % 3 == 0:
+            print ("fizzbuzz")
+
+        if x % 5 == 0:
+            print ("fizz")
+        
+        else:
+            print (x)
+
+fizzbuzz()
