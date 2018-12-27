@@ -12,15 +12,12 @@ def find_length(string):
 # then "lloWorld" etc etc etc
 # counting every recursion
 
-def find_length_recursive(string):
-	if string == "":
-		
-		return 100
-	else:
-		
-		return find_length_recursive(string[1:]) + 1
 
-print(find_length_recursive("DJKSD"))
+def find_recursive(string):
+	if string == "":
+		return 0
+	return find_recursive(string[1:]) + 1
+
 """
 1: "DJKSD"
 2: "JKSD"
@@ -30,3 +27,5 @@ print(find_length_recursive("DJKSD"))
 100: ""
 
 """
+
+print(find_recursive("sjkdljsaf"))
