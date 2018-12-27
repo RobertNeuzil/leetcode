@@ -58,6 +58,55 @@ def find_two_sum(two_sum_target, two_sum_list, high, low):
     print ("None of the items in the list can be added together to reach the target value")
     return False
 
-find_two_sum(12, two_sum_list, len(two_sum_list) - 1, 0)
+#find_two_sum(12, two_sum_list, len(two_sum_list) - 1, 0)
 
 
+
+string_two_two = "A Toyota! Race fast, safe car! A Toyota!"
+
+string_two_three = """ The last two episodes of 'How I met Your Mother' should have been the final season. While the 
+plot of the first twenty episodes should have been one episode """
+
+def is_palindrome(string):
+    string = string.lower()
+    string = string.replace(" ", "" )
+    string = string.replace("!", "")
+    string = string.replace(",", "")
+
+
+    if string == string[::-1]:
+        return True
+    return False
+
+#print(is_palindrome(string_two_two))
+#print(is_palindrome(string_two_three))
+
+
+string_with_unkown_length = """jakslfjsdlkfjslkdfjskldfjlkesj
+flkerjflksfjklsfjkslfjskljfskljasijwei
+ofjifheriofjioefjerfjioefr"""
+
+#I'm pretty sure this algorithim is entirely useless for
+#optimzing time or space complexity
+#nonetheless, here it is
+
+def length_of_string(string):
+    if string == "":
+        return 0
+    
+    return length_of_string(string[1::]) + 1 
+
+print(length_of_string(string_with_unkown_length))
+
+
+
+cap_letter_string = "skdjlksjdsdjfksljfdlkfjsldkfjdkKKKKKKKKKKLMNOOPOS"
+def find_upper_recursive(string, index = 0):
+    if string[index].isupper():
+        return string[index]
+    if index == len(string) - 1:
+        return "None Found"
+    return find_upper_recursive(string, index + 1)
+    
+
+print(find_upper_recursive(cap_letter_string))
