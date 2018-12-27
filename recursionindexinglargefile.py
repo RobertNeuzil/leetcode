@@ -66,5 +66,16 @@ def find_sum(sorted_list, target):
 			low += 1
 	return False
 
+def find_sum_recursion(sorted_list, target, high, low):
+	while low <= high:
+		if target == sorted_list[high] + sorted_list[low]:
+			return [sorted_list[high], sorted_list[low], "are equal to", target]
+		if target < sorted_list[high] + sorted_list[low]:
+			return find_sum_recursion(sorted_list, target, high - 1, low)
+		if target > sorted_list[high] + sorted_list[low]:
+			return find_sum_recursion(sorted_list, target, high, low + 1)
+	return False
 
-print(find_sum(sorted_list, 8))
+print(find_sum_recursion(sorted_list, target, len(sorted_list) - 1, 0))
+
+
