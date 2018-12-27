@@ -1,40 +1,43 @@
-el_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-
-def binary_search(target, el_list):
-	for x in el_list:
-		if x == target:
-			return True
-	return False
-
-
-def binary_better(target, el_list):
-	high = len(el_list) - 1
-	low = 0
+def recursive_binary_search(data, target, high, low):
 	while low <= high:
-		mid = (low + high ) // 2
+		middle = (low + high) // 2
 
-		if el_list[mid] == target:
+		if target == data[middle]:
+			print (target)
 			return True
-		elif target < el_list[mid]:
-			high = mid - 1
-		else:
-			low = mid + 1
+		if target > data[middle]:
+			return recursive_binary_search(data, target, high, middle + 1)
+		if target < data[middle]:
+			return recursive_binary_search(data, target, middle - 1, low)
 	return False
 
 
 
-def binary_recursive(data, target, high, low):
-	if low > high:
-		return False
-	else:
+def binary(data, target):
+	low = 0
+	high = len(data) - 1
+
+	while low <= high:
+
 		mid = (high + low) // 2
-		if target == data[mid]:
+
+		if data[mid] == target:
+			print (target, "at", "index", ":", mid)
 			return True
-		elif target < data[mid]:
-			return binary_recursive(data, target, mid - 1, low)
-		else:
-			return binary_recursive(data, target, high, mid + 1)
+		if target < data[mid]:
+			high = mid - 1
+		if target > data[mid]:
+			low = mid + 1
+	print ("Target does not exist in list")
 	return False
 
 
-print(binary_recursive(el_list, 7, len(el_list) -1 , 0))
+
+
+
+
+
+data = [2,4,5,7,8,9,12,14,17,19,22,25,27,28,33,37]
+target = 27
+
+binary(data, target)
