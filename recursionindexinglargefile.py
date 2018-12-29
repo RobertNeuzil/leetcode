@@ -48,5 +48,22 @@ def f(n):
     else:
         return f(n-1) + f(n - 2)
 
-for x in range (1, 50):
-    print (f(x))
+
+
+one_capital = "robErtneuzil"
+ 
+two_sum_list = [1, 2, 11, 19, 33, 55, 99]
+target = 101
+
+def two_sum(two_sum_list, target, high, low):
+    while low <= high:
+        if two_sum_list[high] + two_sum_list[low] == target:
+            return True
+        if target < two_sum_list[high] + two_sum_list[low]:
+            return two_sum(two_sum_list, target, high - 1, low)
+        if target > two_sum_list[high] + two_sum_list[low]:
+            return two_sum(two_sum_list, target, high, low + 1)
+
+    return False
+
+print (two_sum(two_sum_list, target, len(two_sum_list) - 1, 0))
