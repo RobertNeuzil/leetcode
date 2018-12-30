@@ -1,69 +1,45 @@
 from functools import lru_cache
 
-my_list = [1, 2, 4, 8, 9, 10,  11, 14, 19, 22]
-target = 11
-def binary_search(my_list, target, high, low):
 
+def binary_search(my_list, target, low, high):
 
     while low <= high:
-        mid = (high + low) // 2
+        mid = (low + high) // 2
 
         if target == my_list[mid]:
             return True
-        elif target < my_list[mid]:
-            return binary_search(my_list, target, mid - 1, low)
-        elif target > my_list[mid]:
-            return binary_search(my_list, target, high, mid + 1)
+        if target < my_list[mid]:
+            return binary_search(my_list, target, low, mid - 1)
+        if target > my_list[mid]:
+            return binary_search(my_list, target, mid + 1, high)
     return False
 
-my_string = "sjdkaljdaklsjdaklsfjdlksjdaklsfjlkasfjslkfjdlksdajdskl"
+two_sum_list = [1, 2, 5, 9, 11, 1000000]
+target = 20
 
-def length_string(string):
+def find_two_sum(two_sum_list, target, high, low):
+    while low <= high:
+        
 
-    if string == "":
-        return 0
-    else:
-        return length_string(string[1:]) + 1
-
-
-
-def is_palindrome(string):
-    string = string.lower()
-    
-    if len(string) <= 1:
-        return False
-    reversed_string = string[::-1]
-
-    if string == reversed_string:
-        return True
-
+        if two_sum_list[high] + two_sum_list[low] == target:
+            print (two_sum_list[high], "and", two_sum_list[low], f"are equal to {target}")
+            return True
+        if two_sum_list[high] + two_sum_list[low] < target:
+            return find_two_sum(two_sum_list, target, high, low + 1)
+        if two_sum_list[high] + two_sum_list[low] > target:
+            return find_two_sum(two_sum_list, target, high - 1, low)
+    print ("The elements of the list do not add up to the target")
     return False
 
+print(find_two_sum(two_sum_list, 208309283983, len(two_sum_list) - 1, 0))
 
-@lru_cache(maxsize = 100)
+@lru_cache(maxsize = 11111)
 def f(n):
 
     if n == 1 or n == 2:
         return 1
     else:
-        return f(n-1) + f(n - 2)
+        return f(n - 1) + f(n - 2)
 
-
-
-one_capital = "robErtneuzil"
- 
-two_sum_list = [1, 2, 11, 19, 33, 55, 99]
-target = 101
-
-def two_sum(two_sum_list, target, high, low):
-    while low <= high:
-        if two_sum_list[high] + two_sum_list[low] == target:
-            return True
-        if target < two_sum_list[high] + two_sum_list[low]:
-            return two_sum(two_sum_list, target, high - 1, low)
-        if target > two_sum_list[high] + two_sum_list[low]:
-            return two_sum(two_sum_list, target, high, low + 1)
-
-    return False
-
-print (two_sum(two_sum_list, target, len(two_sum_list) - 1, 0))
+for x in range (1, 101):
+    print(x, "::::", f(x))
