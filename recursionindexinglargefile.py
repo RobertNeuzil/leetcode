@@ -31,7 +31,6 @@ def find_two_sum(two_sum_list, target, high, low):
     print ("The elements of the list do not add up to the target")
     return False
 
-print(find_two_sum(two_sum_list, 208309283983, len(two_sum_list) - 1, 0))
 
 @lru_cache(maxsize = 11111)
 def f(n):

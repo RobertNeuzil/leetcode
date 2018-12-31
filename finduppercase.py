@@ -15,7 +15,7 @@ def find_upper_recursive(string, index = 0):
 		return string[index]
 	if index == len(string) - 1:
 		return "None Found"
-	return find_first_upper(string, index + 1)
+	return find_upper_recursive(string, index + 1)
 	
 
 print(find_upper_recursive(string_1))
