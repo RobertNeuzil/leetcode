@@ -18,9 +18,6 @@ def binary_recursive(my_list, target, high, low):
     return False
 
 
-
-string_with_upper = "robertNeuzil"
-
 def find_upper(string, index = 0):
     if string[index].isupper():
         return string[index]
@@ -38,5 +35,39 @@ def f(n):
     else:
         return f(n - 1) + f(n - 2)
 
-for p in range(1, 101):
-    print (f(p))
+def length_of_string(string):
+    if string == "":
+        return 0
+    return length_of_string(string[1::]) + 1
+
+def is_palindrome(string):
+    string = string.lower()
+    string = string.replace(" ", "")
+
+    reversed_str = string[::-1]
+
+    if reversed_str == string:
+        return True
+    else:
+        return False
+
+two_sum_list = [1,2,3,4,5,6,11]
+target_sum = 13
+
+
+def find_two_sum(two_sum_list, target_sum, high = len(two_sum_list) - 1, low = 0):
+    while low <= high:
+        
+        if target_sum == two_sum_list[low] + two_sum_list[high]:
+            return True
+
+        if target_sum < two_sum_list[low] + two_sum_list[high]:
+            return find_two_sum(two_sum_list, target_sum, high - 1)
+        if target_sum > two_sum_list[low] + two_sum_list[high]:
+            return find_two_sum(two_sum_list, target_sum, high, low + 1)
+        
+    
+    return False
+
+print(find_two_sum(two_sum_list, target_sum, len(two_sum_list) - 1, 0))
+
