@@ -1,38 +1,36 @@
 from functools import lru_cache
 
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+target = 4
 
-def binary_search(my_list, target, low, high):
-
+def binary_recursive(my_list, target, high, low):
     while low <= high:
-        mid = (low + high) // 2
+        mid = (high + low) // 2
 
         if target == my_list[mid]:
+            print (f'{target} is an element in {my_list}')
             return True
         if target < my_list[mid]:
-            return binary_search(my_list, target, low, mid - 1)
+            return binary_recursive(my_list, target, mid - 1, low)
         if target > my_list[mid]:
-            return binary_search(my_list, target, mid + 1, high)
-    return False
-
-two_sum_list = [1, 2, 5, 9, 11, 1000000]
-target = 20
-
-def find_two_sum(two_sum_list, target, high, low):
-    while low <= high:
-        
-
-        if two_sum_list[high] + two_sum_list[low] == target:
-            print (two_sum_list[high], "and", two_sum_list[low], f"are equal to {target}")
-            return True
-        if two_sum_list[high] + two_sum_list[low] < target:
-            return find_two_sum(two_sum_list, target, high, low + 1)
-        if two_sum_list[high] + two_sum_list[low] > target:
-            return find_two_sum(two_sum_list, target, high - 1, low)
-    print ("The elements of the list do not add up to the target")
+            return binary_recursive(my_list, target, high, mid + 1)
+    print (f'{target} is not an element in {my_list}')
     return False
 
 
-@lru_cache(maxsize = 11111)
+
+string_with_upper = "robertNeuzil"
+
+def find_upper(string, index = 0):
+    if string[index].isupper():
+        return string[index]
+    if string[index] == len(string) - 1:
+        return "none found"
+    else:
+        return find_upper(string, index + 1)
+
+
+@lru_cache(maxsize = 300)
 def f(n):
 
     if n == 1 or n == 2:
@@ -40,5 +38,5 @@ def f(n):
     else:
         return f(n - 1) + f(n - 2)
 
-for x in range (1, 101):
-    print(x, "::::", f(x))
+for p in range(1, 101):
+    print (f(p))
