@@ -69,5 +69,16 @@ def find_two_sum(two_sum_list, target_sum, high = len(two_sum_list) - 1, low = 0
     
     return False
 
-print(find_two_sum(two_sum_list, target_sum, len(two_sum_list) - 1, 0))
+def father_son(fatherAge, sonAge):
+    while sonAge < 1000:
+    
+        if fatherAge / 2 == sonAge:
+            print (f"The father will be twice as old as the son when the son is {sonAge} and the father is {fatherAge}")
+            return True
+        else:
+            return father_son(fatherAge + 1, sonAge + 1)
+    
+    print (f"those parameter can not be met")
+    return False
 
+father_son(62, 23)
