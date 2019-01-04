@@ -1,84 +1,53 @@
 from functools import lru_cache
 
-my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-target = 4
-
-def binary_recursive(my_list, target, high, low):
-    while low <= high:
-        mid = (high + low) // 2
-
-        if target == my_list[mid]:
-            print (f'{target} is an element in {my_list}')
-            return True
-        if target < my_list[mid]:
-            return binary_recursive(my_list, target, mid - 1, low)
-        if target > my_list[mid]:
-            return binary_recursive(my_list, target, high, mid + 1)
-    print (f'{target} is not an element in {my_list}')
-    return False
-
-
-def find_upper(string, index = 0):
-    if string[index].isupper():
-        return string[index]
-    if string[index] == len(string) - 1:
-        return "none found"
-    else:
-        return find_upper(string, index + 1)
-
-
-@lru_cache(maxsize = 300)
-def f(n):
-
+@lru_cache(maxsize = 200)
+def fib(n):
+    if n == 0:
+        return 0
     if n == 1 or n == 2:
         return 1
-    else:
-        return f(n - 1) + f(n - 2)
+    return fib(n-1) + fib(n-2)
 
-def length_of_string(string):
-    if string == "":
-        return 0
-    return length_of_string(string[1::]) + 1
+two_sum_list = [1, 9, 22, 500, 10000000, 100000000000000000]
+two_sum_target = 31
 
-def is_palindrome(string):
-    string = string.lower()
-    string = string.replace(" ", "")
-
-    reversed_str = string[::-1]
-
-    if reversed_str == string:
-        return True
-    else:
-        return False
-
-two_sum_list = [1,2,3,4,5,6,11]
-target_sum = 13
-
-
-def find_two_sum(two_sum_list, target_sum, high = len(two_sum_list) - 1, low = 0):
+def two_sum(two_sum_list, two_sum_target, low, high):
     while low <= high:
-        
-        if target_sum == two_sum_list[low] + two_sum_list[high]:
-            return True
 
-        if target_sum < two_sum_list[low] + two_sum_list[high]:
-            return find_two_sum(two_sum_list, target_sum, high - 1)
-        if target_sum > two_sum_list[low] + two_sum_list[high]:
-            return find_two_sum(two_sum_list, target_sum, high, low + 1)
-        
-    
+        if two_sum_target == two_sum_list[low] + two_sum_list[high]:
+            return True
+        if two_sum_target < two_sum_list[low] + two_sum_list[high]:
+            return two_sum(two_sum_list, two_sum_target, low, high - 1)
+        if two_sum_target > two_sum_list[low] + two_sum_list[high]:
+            return two_sum(two_sum_list, two_sum_target, low + 1, high)
+
     return False
 
-def father_son(fatherAge, sonAge):
-    while sonAge < 1000:
+binary_list = range(1, 101)
+binary_target = 14
+
+def binary_search(binary_list, binary_target, low, high):
+    while low <= high:
+        mid = low + high
     
-        if fatherAge / 2 == sonAge:
-            print (f"The father will be twice as old as the son when the son is {sonAge} and the father is {fatherAge}")
+        if binary_target == binary_list[mid]:
             return True
-        else:
-            return father_son(fatherAge + 1, sonAge + 1)
-    
-    print (f"those parameter can not be met")
+        if binary_target < binary_list[mid]:
+            return binary_search(binary_list, binary_target, low, mid - 1)
+        if binary_target > binary_list[mid]:
+            return binary_search(binary_list, binary_target, mid + 1, high)
+
     return False
 
-father_son(62, 23)
+def fizzbuzz():
+
+    for x in range(1, 1001):
+        if x % 25 == 0:
+            print ( x,  "Fizzbuzz")
+
+        if x % 5 == 0 and x % 25 != 0:
+            print (x , "Fizz")
+        if x % 5 != 0:
+            print (x)
+
+fizzbuzz()
