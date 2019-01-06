@@ -1,9 +1,10 @@
 import random
+
 def generateone(strlen):
-	alphabet = "abcdefghijklmnopqrstuvwxyz"
+	alphabet = "abcdefghijklmnopqrstuvwxyz "
 	res = ""
 	for i in range(strlen):
-		res = res + alphabet[random.randrange(26)]
+		res = res + alphabet[random.randrange(len(alphabet))]
 	return res
 
 def score(goal, teststring):
@@ -14,17 +15,18 @@ def score(goal, teststring):
 	return numsame / len(goal)
 
 def main():
-
-	goalstring = 'catt'
-	newstring = generateone(4)
+	goalstring = 'methinks it'
+	newstring = generateone(11)
 	best = 0
+	count = 0
 	newscore = score(goalstring, newstring)
 	while newscore < 1:
-		if newscore >= best:
-			print (newscore, newstring)
+		if newscore > best:
+			#print (newscore, newstring)
 			best = newscore
-		newstring = generateone(4)
+		newstring = generateone(11)
 		newscore = score(goalstring, newstring)
-	if newscore == 1:
-		print (newstring)
+		count += 1
+		if count % 100000 == 0:
+			print (newscore, newstring, count)
 main()
