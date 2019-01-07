@@ -18,14 +18,12 @@ def main():
 	goalstring = 'wendy'
 	newstring = generateone(5)
 	best = 0
-	count = 0
 	newscore = score(goalstring, newstring)
 	while newscore < 1:
 		if newscore > best:
-			print (newscore, newstring, count)
+			print (newscore, newstring)
 			best = newscore
 		newstring = generateone(5)
 		newscore = score(goalstring, newstring)
-		count += 1
-	print (newscore, newstring, count)
+		print (newscore, newstring)
 main()
