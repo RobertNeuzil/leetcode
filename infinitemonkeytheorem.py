@@ -15,18 +15,17 @@ def score(goal, teststring):
 	return numsame / len(goal)
 
 def main():
-	goalstring = 'methinks it'
-	newstring = generateone(11)
+	goalstring = 'wendy'
+	newstring = generateone(5)
 	best = 0
 	count = 0
 	newscore = score(goalstring, newstring)
 	while newscore < 1:
 		if newscore > best:
-			#print (newscore, newstring)
+			print (newscore, newstring, count)
 			best = newscore
-		newstring = generateone(11)
+		newstring = generateone(5)
 		newscore = score(goalstring, newstring)
 		count += 1
-		if count % 100000 == 0:
-			print (newscore, newstring, count)
+	print (newscore, newstring, count)
 main()
