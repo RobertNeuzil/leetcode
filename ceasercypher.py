@@ -11,5 +11,7 @@ def ceaser_cypher(cleartext):
 		else:
 			cyphertext += xox
 	return cyphertext
-ceaser = ceaser_cypher("helloworld")
-print (ceaser)
+
+print (ceaser_cypher("Hello World"))
+print (ceaser_cypher('helloworld'))
+print (ceaser_cypher('hel          loworld'))
