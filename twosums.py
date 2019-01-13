@@ -6,6 +6,7 @@ def find_the_sum(target, sorted_list, low, high):
 	
 	while low < high:
 		if sorted_list[low] + sorted_list[high] == target:
+			print (sorted_list[low], "and", sorted_list[high], "is equal to", target)
 			return True
 		if target < sorted_list[low] + sorted_list[high]:
 			return find_the_sum(target, sorted_list, 0, high - 1)
@@ -13,4 +14,4 @@ def find_the_sum(target, sorted_list, low, high):
 			return find_the_sum(target, sorted_list, low + 1, high)
 	return False
 
-print(find_the_sum(18, sorted_list, 0, len(sorted_list) - 1))
+print(find_the_sum(target, sorted_list, 0, len(sorted_list) - 1))

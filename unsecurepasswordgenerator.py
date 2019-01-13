@@ -16,6 +16,6 @@ def generate_password(characterlength):
 
 file = open("randompass.txt", "a")
 
-for n in range(1, 1000001):
+for n in range(1, 201):
 	file.write(generate_password(28),)
 file.close()
